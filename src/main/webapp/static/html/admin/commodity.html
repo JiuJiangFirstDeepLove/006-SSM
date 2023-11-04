@@ -1,0 +1,209 @@
+<c:set var="path" value="${pageContext.request.contextPath}" xmlns:c=""></c:set>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>云养商城</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content=""/>
+
+    <!--// Meta tag Keywords -->
+    <!-- css files -->
+    <link rel="stylesheet" href="${path}/static/bootstrap/css/bootstrap.css" type="text/css" media="all">
+    <!-- Owl-Carousel-CSS -->
+    <link rel="stylesheet" href="${path}/static/css/user/style.css" type="text/css" media="all" />
+    <!-- Bootstrap-Core-CSS -->
+    <link rel="stylesheet" href="${path}/static/css/user/font-awesome.css" type="text/css" media="all">
+
+</head>
+<body>
+<!--导航栏-->
+<!-- sticky navigation -->
+<div class="nav-links">
+    <nav class='navbar navbar-default'>
+        <div class='container'>
+            <div class='collapse navbar-collapse'>
+                <ul>
+                    <li>
+                        <a href="../user/index.html">主页</a>
+                    </li>
+                    <li>
+                        <a href="../user/about.html">动物知识</a>
+                    </li>
+                    <li>
+                        <a href="../user/services.html">领养中心</a>
+                    </li>
+                    <li>
+                        <a href="../user/blog.html">团队博客</a>
+                    </li>
+                    <li>
+                        <a href="../user/apply.html">志愿申请</a>
+                    </li>
+                    <li>
+                        <a href="commodity.html">商品申请</a>
+                    </li>
+                    <li>
+                        <button class="btn-primary btn-lg" data-toggle="modal" data-target="#login">注册/登录</button>
+                    </li>
+                    <li>
+                        <button class="btn-primary btn-lg" data-toggle="modal" data-target="#editUsers">修改</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!--gallery-->
+<div class="gallery">
+    <div class="container">
+        <div class="alert alert-info">猫猫用品</div>
+        <div class="gallery-grids">
+<!--            <c:forEach user.getUid()="${newList}" var="commodity">-->
+<!--                <div class="col-md-3 gallery-grid ">-->
+<!--                    <a href="commodity_detail.action?c_id=${commodity.c_id}">-->
+<!--                        <img src="${commodity.c_cover}" class="img-responsive" alt="${commodity.c_name}"/>-->
+<!--                    </a>-->
+<!--                    <div class="gallery-info">-->
+<!--                        <p>-->
+<!--                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>-->
+<!--                            <a href="commodity_detail.action?bid=${commodity.c_id}">查看详情</a>-->
+<!--                        </p>-->
+<!--                        <a class="shop" href="javascript:;" onclick="buy(${commodity.c_id})">立刻购买</a>-->
+<!--                        <div class="clearfix"> </div>-->
+<!--                    </div>-->
+<!--                    <div class="galy-info">-->
+<!--                        <p> ${commodity.c_name}</p>-->
+<!--                        <div class="galry">-->
+<!--                            <div class="prices">-->
+<!--                                <h5 class="item_price">¥ ${commodity.c_price}</h5>-->
+<!--                            </div>-->
+<!--                            <div class="clearfix"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--    </c:forEach>-->
+            <div id="gallery"></div>
+
+            <script>
+                // 定义商品列表数据
+                var newList = [
+                    { c_id: 1001, c_cover: 'images/commodity/group hug.jpg', c_name: '狗粮', c_price: 10 },
+                    // { c_id: 2, c_cover: 'commodity2.jpg', c_name: '商品2', c_price: 200 },
+                    // { c_id: 3, c_cover: 'commodity3.jpg', c_name: '商品3', c_price: 300 }
+                ];
+
+                // 循环遍历商品列表数据
+                for (var i = 0; i < newList.length; i++) {
+                    var commodity = newList[i];
+
+                    // 创建商品展示模板
+                    var galleryItem = `
+            <div class="col-md-3 gallery-grid">
+                <a href="commodity_detail.html?c_id=${commodity.c_id}">
+                    <img src="${commodity.c_cover}" class="img-responsive" alt="${commodity.c_name}">
+                </a>
+                <div class="gallery-info">
+                    <p>
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        <a href="commodity_detail.html?bid=${commodity.c_id}">查看详情</a>
+                    </p>
+                    <a class="shop" href="javascript:;" onclick="buy(${commodity.c_id})">立刻购买</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="galy-info">
+                    <p>${commodity.c_name}</p>
+                    <div class="galry">
+                        <div class="prices">
+                            <h5 class="item_price">¥ ${commodity.c_price}</h5>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        `;
+                    // 将商品展示模板添加到页面中
+                    document.querySelector('#gallery').innerHTML += galleryItem;
+                }
+            </script>
+
+        </div>
+        <div class="alert alert-info">狗狗用品</div>
+        <div class="gallery-grids">
+<!--            <c:forEach items="${newList}" var="commodity">-->
+<!--                <div class="col-md-3 gallery-grid ">-->
+<!--                    <a href="commodity_detail.action?bid=${commodity.c_id}">-->
+<!--                        <img src="${commodity.c_cover}" class="img-responsive" alt="${commodity.c_name}"/>-->
+<!--                    </a>-->
+<!--                    <div class="gallery-info">-->
+<!--                        <p>-->
+<!--                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>-->
+<!--                            <a href="commodity_detail.action?bid=${commodity.c_id}">查看详情</a>-->
+<!--                        </p>-->
+<!--                        <a class="shop" href="javascript:;" onclick="buy(${commodity.c_id})">立刻购买</a>-->
+<!--                        <div class="clearfix"> </div>-->
+<!--                    </div>-->
+<!--                    <div class="galy-info">-->
+<!--                        <p> ${commodity.c_name}</p>-->
+<!--                        <div class="galry">-->
+<!--                            <div class="prices">-->
+<!--                                <h5 class="item_price">¥ ${commodity.c_price}</h5>-->
+<!--                            </div>-->
+<!--                            <div class="clearfix"></div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </c:forEach>-->
+            <div class="clearfix"></div>
+            <script>
+                // 定义商品列表数据
+                var newList = [
+                    { c_id: 1002, c_cover:'static/images/commodity/QQ图片20210623213105.jpg', c_name: 'ddd', c_price: 20 },
+                    // { c_id: 2, c_cover: 'commodity2.jpg', c_name: '商品2', c_price: 200 },
+                    // { c_id: 3, c_cover: 'commodity3.jpg', c_name: '商品3', c_price: 300 }
+                ];
+
+                // 循环遍历商品列表数据
+                for (var i = 0; i < newList.length; i++) {
+                    var commodity = newList[i];
+
+                    // 创建商品展示模板
+                    var galleryItem = `
+            <div class="col-md-3 gallery-grid">
+                <a href="commodity_detail.html?c_id=${commodity.c_id}">
+                    <img src="${commodity.c_cover}" class="img-responsive" alt="${commodity.c_name}">
+                </a>
+                <div class="gallery-info">
+                    <p>
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        <a href="commodity_detail.html?bid=${commodity.c_id}">查看详情</a>
+                    </p>
+                    <a class="shop" href="javascript:;" onclick="buy(${commodity.c_id})">立刻购买</a>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="galy-info">
+                    <p>${commodity.c_name}</p>
+                    <div class="galry">
+                        <div class="prices">
+                            <h5 class="item_price">¥ ${commodity.c_price}</h5>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+                    // 将商品展示模板添加到页面中
+                    document.querySelector('#gallery').innerHTML += galleryItem;
+                }
+            </script>
+
+        </div>
+    </div>
+</div>
+<!--//gallery-->
+
+
+</body>
+</html>
